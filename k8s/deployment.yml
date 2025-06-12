@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ad-service
+  namespace: ad
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ad-service
+  template:
+    metadata:
+      labels:
+        app: ad-service
+    spec:
+      containers:
+        - name: ad-service
+          image: roin09/ad-service:latest
+          ports:
+            - containerPort: 8088
+          envFrom:
+            - configMapRef:
+                name: ad-service-config
+            - secretRef:
+                name: ad-service-secret
