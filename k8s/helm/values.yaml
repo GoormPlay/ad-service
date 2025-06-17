@@ -1,0 +1,11 @@
+image:
+  repository: roin09/ad-service
+  tag: latest
+
+service:
+  port: 80
+  targetPort: 8088
+
+env:
+  useConfigMap: true
+  useSecret: true
